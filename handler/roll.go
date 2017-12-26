@@ -24,7 +24,7 @@ func (rh *Roll) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var dice = make([]roll.Dice, 7)
+	var dice []roll.Dice
 
 	for field, value := range r.Form {
 		val, err := convv(value)
@@ -33,20 +33,36 @@ func (rh *Roll) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
+		if val == 0 {
+			continue
+		}
+
+		var d roll.Dice
 		switch field {
 		case "d4":
+			d = roll.NewD4(val)
 		case "d6":
-			dice = append(dice, roll.NewD6(val))
+			d = roll.NewD6(val)
 		case "d8":
+			d = roll.NewD8(val)
 		case "d10":
+			d = roll.NewD10(val)
 		case "d12":
-		case "d20-normal":
-		case "d20-advantage":
-		case "d20-disadvantage":
+			d = roll.NewD12(val)
 		case "d100":
+			d = roll.NewD100(val)
+		case "d20-normal":
+			d = roll.NewD20Normal()
+		case "d20-advantage":
+			d = roll.NewD20Advantage()
+		case "d20-disadvantage":
+			d = roll.NewD20Disadvantage()
 		}
-		log.Println(field, val)
+
+		dice = append(dice, d)
 	}
+
+	log.Println(len(dice))
 }
 
 func redirect(w http.ResponseWriter, r *http.Request) {
