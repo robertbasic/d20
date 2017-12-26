@@ -1,3 +1,37 @@
 {{define "body"}}
-Hello world!
+<div class="tile is-ancestor">
+    <div class="tile is-4 is-parent is-vertical">
+        <div class="tile box is-child">
+            d20
+        </div>
+        <div class="tile box is-child">
+            d6
+        </div>
+    </div>
+    <div class="tile is-parent is-vertical is-paddingless-top-bottom">
+        <div class="tile is-parent is-paddingless">
+            <div class="tile is-vertical is-parent">
+                <div class="tile box is-child">
+                    d8
+                </div>
+                <div class="tile box is-child">
+                    d10
+                </div>
+            </div>
+            <div class="tile is-vertical is-parent">
+                <div class="tile box is-child">
+                    d4
+                </div>
+                <div class="tile box is-child">
+                    d12
+                </div>
+            </div>
+        </div>
+        <div class="tile is-parent">
+            <div class="tile box is-child">
+                d100
+            </div>
+        </div>
+    </div>
+</div>
 {{end}}
