@@ -1,36 +1,96 @@
 {{define "body"}}
-<form method="post">
+<form method="post" action="/roll">
     <div class="tile is-ancestor">
         <div class="tile is-4 is-parent is-vertical">
-            <div class="tile box is-child">
-                d20
+            <div class="tile box is-child notification is-info">
+                <p class="title">d20</p>
+                <div class="field">
+                    <label class="label">Throw:</label>
+                    <div class="control">
+                        <label class="radio">
+                            <input type="radio" name="d20-normal" />
+                            Normal
+                        </label>
+
+                        <label class="radio">
+                            <input type="radio" name="d20-advantage" />
+                            Advantage
+                        </label>
+
+                        <label class="radio">
+                            <input type="radio" name="d20-disadvantage" />
+                            Disadvantage
+                        </label>
+                    </div>
+                </div>
             </div>
-            <div class="tile box is-child">
-                d6
+            <div class="tile box is-child notification is-success">
+                <p class="title">d6</p>
+                <div class="field">
+                    <label class="label">How many?</label>
+                    <div class="control">
+                        <input type="number" class="input" name="d6" value="0" />
+                    </div>
+                </div>
             </div>
         </div>
         <div class="tile is-parent is-vertical is-paddingless-top-bottom">
             <div class="tile is-parent is-paddingless">
                 <div class="tile is-vertical is-parent is-paddingless-left">
-                    <div class="tile box is-child">
-                        d8
+                    <div class="tile box is-child notification is-primary">
+                        <p class="title">d8</p>
+
+                        <div class="field">
+                            <label class="label">How many?</label>
+                            <div class="control">
+                                <input type="number" class="input" name="d8" value="0" />
+                            </div>
+                        </div>
                     </div>
-                    <div class="tile box is-child">
-                        d10
+                    <div class="tile box is-child notification is-primary">
+                        <p class="title">d10</p>
+
+                        <div class="field">
+                            <label class="label">How many?</label>
+                            <div class="control">
+                                <input type="number" class="input" name="d10" value="0" />
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="tile is-vertical is-parent is-paddingless-right">
-                    <div class="tile box is-child">
-                        d4
+                    <div class="tile box is-child notification is-warning">
+                        <p class="title">d4</p>
+
+                        <div class="field">
+                            <label class="label">How many?</label>
+                            <div class="control">
+                                <input type="number" class="input" name="d4" value="0" />
+                            </div>
+                        </div>
                     </div>
-                    <div class="tile box is-child">
-                        d12
+                    <div class="tile box is-child notification is-warning">
+                        <p class="title">d12</p>
+
+                        <div class="field">
+                            <label class="label">How many?</label>
+                            <div class="control">
+                                <input type="number" class="input" name="d12" value="0" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="tile is-parent is-paddingless-left-right">
-                <div class="tile box is-child">
-                    d100
+                <div class="tile box is-child notification is-danger">
+                    <p class="title">d100</p>
+
+                    <div class="field">
+                        <label class="label">How many?</label>
+                        <div class="control">
+                            <input type="number" class="input" name="d100" value="0" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -41,7 +101,7 @@
             <div class="tile is-child box">
                 <div class="field is-grouped is-grouped-centered">
                     <p class="control">
-                        <button class="button is-primary">
+                        <button class="button is-link is-large">
                             Roll the dice
                         </button>
                     </p>
