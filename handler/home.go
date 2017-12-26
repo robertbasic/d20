@@ -5,7 +5,11 @@ import (
 	"html/template"
 )
 
-var tpl = template.Must(template.ParseFiles("template/home.html"))
+var tpls = []string{
+	"template/layout.html",
+	"template/home.html",
+}
+var tpl = template.Must(template.ParseFiles(tpls...))
 
 type Home struct {}
 
