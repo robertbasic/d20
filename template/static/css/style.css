@@ -2,3 +2,13 @@
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 }
+.is-paddingless-left {
+    padding-left: 0 !important;
+}
+.is-paddingless-right {
+    padding-right: 0 !important;
+}
+.is-paddingless-left-right {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
