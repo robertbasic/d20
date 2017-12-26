@@ -1,51 +1,54 @@
 {{define "body"}}
-<div class="tile is-ancestor">
-    <div class="tile is-4 is-parent is-vertical">
-        <div class="tile box is-child">
-            d20
-        </div>
-        <div class="tile box is-child">
-            d6
-        </div>
-    </div>
-    <div class="tile is-parent is-vertical is-paddingless-top-bottom">
-        <div class="tile is-parent is-paddingless">
-            <div class="tile is-vertical is-parent is-paddingless-left">
-                <div class="tile box is-child">
-                    d8
-                </div>
-                <div class="tile box is-child">
-                    d10
-                </div>
-            </div>
-            <div class="tile is-vertical is-parent is-paddingless-right">
-                <div class="tile box is-child">
-                    d4
-                </div>
-                <div class="tile box is-child">
-                    d12
-                </div>
-            </div>
-        </div>
-        <div class="tile is-parent is-paddingless-left-right">
+<form method="post">
+    <div class="tile is-ancestor">
+        <div class="tile is-4 is-parent is-vertical">
             <div class="tile box is-child">
-                d100
+                d20
+            </div>
+            <div class="tile box is-child">
+                d6
+            </div>
+        </div>
+        <div class="tile is-parent is-vertical is-paddingless-top-bottom">
+            <div class="tile is-parent is-paddingless">
+                <div class="tile is-vertical is-parent is-paddingless-left">
+                    <div class="tile box is-child">
+                        d8
+                    </div>
+                    <div class="tile box is-child">
+                        d10
+                    </div>
+                </div>
+                <div class="tile is-vertical is-parent is-paddingless-right">
+                    <div class="tile box is-child">
+                        d4
+                    </div>
+                    <div class="tile box is-child">
+                        d12
+                    </div>
+                </div>
+            </div>
+            <div class="tile is-parent is-paddingless-left-right">
+                <div class="tile box is-child">
+                    d100
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="tile is-ancestor">
-    <div class="tile is-12 is-parent">
-        <div class="tile is-child box">
-            <div class="field is-grouped is-grouped-centered">
-                <p class="control">
-                    <a class="button is-primary">
-                        Roll the dice
-                    </a>
-                </p>
+    <div class="tile is-ancestor">
+        <div class="tile is-12 is-parent">
+            <div class="tile is-child box">
+                <div class="field is-grouped is-grouped-centered">
+                    <p class="control">
+                        <button class="button is-primary">
+                            Roll the dice
+                        </button>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+</form>
 {{end}}
