@@ -4,7 +4,7 @@ package roll
 // possible dice type
 type Dice interface {
 	roll()
-	total() int
+	Total() int
 }
 
 // D20 is a Dice with 20 sides
@@ -36,7 +36,7 @@ func (d *D20) roll() {
 
 }
 
-func (d *D20) total() int {
+func (d *D20) Total() int {
 	return d.rolls[0]
 }
 
@@ -57,7 +57,7 @@ func (d *D6) roll() {
 
 }
 
-func (d *D6) total() int {
+func (d *D6) Total() int {
 	var s int
 	for r := range d.rolls {
 		s += r
@@ -82,7 +82,7 @@ func (d *D4) roll() {
 
 }
 
-func (d *D4) total() int {
+func (d *D4) Total() int {
 	var s int
 	for r := range d.rolls {
 		s += r
@@ -107,7 +107,7 @@ func (d *D8) roll() {
 
 }
 
-func (d *D8) total() int {
+func (d *D8) Total() int {
 	var s int
 	for r := range d.rolls {
 		s += r
@@ -132,7 +132,7 @@ func (d *D10) roll() {
 
 }
 
-func (d *D10) total() int {
+func (d *D10) Total() int {
 	var s int
 	for r := range d.rolls {
 		s += r
@@ -157,7 +157,7 @@ func (d *D12) roll() {
 
 }
 
-func (d *D12) total() int {
+func (d *D12) Total() int {
 	var s int
 	for r := range d.rolls {
 		s += r
@@ -182,7 +182,7 @@ func (d *D100) roll() {
 
 }
 
-func (d *D100) total() int {
+func (d *D100) Total() int {
 	var s int
 	for r := range d.rolls {
 		s += r
