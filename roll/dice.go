@@ -1,5 +1,9 @@
 package roll
 
+import (
+	"math/rand"
+)
+
 // Dice is an interface for all the
 // possible dice type
 type Dice interface {
@@ -83,7 +87,9 @@ func NewD6(n int) *D6 {
 }
 
 func (d *D6) roll() {
-
+	for i := 0; i < d.num; i++ {
+		d.rolls[i] = rand.Intn(d.sides) + 1
+	}
 }
 
 func (d *D6) Total() int {
