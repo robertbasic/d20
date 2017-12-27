@@ -59,7 +59,7 @@ func (d *D6) roll() {
 
 func (d *D6) Total() int {
 	var s int
-	for r := range d.rolls {
+	for _, r := range d.rolls {
 		s += r
 	}
 	return s
@@ -84,7 +84,7 @@ func (d *D4) roll() {
 
 func (d *D4) Total() int {
 	var s int
-	for r := range d.rolls {
+	for _, r := range d.rolls {
 		s += r
 	}
 	return s
@@ -109,7 +109,7 @@ func (d *D8) roll() {
 
 func (d *D8) Total() int {
 	var s int
-	for r := range d.rolls {
+	for _, r := range d.rolls {
 		s += r
 	}
 	return s
@@ -134,7 +134,7 @@ func (d *D10) roll() {
 
 func (d *D10) Total() int {
 	var s int
-	for r := range d.rolls {
+	for _, r := range d.rolls {
 		s += r
 	}
 	return s
@@ -159,7 +159,7 @@ func (d *D12) roll() {
 
 func (d *D12) Total() int {
 	var s int
-	for r := range d.rolls {
+	for _, r := range d.rolls {
 		s += r
 	}
 	return s
@@ -184,7 +184,7 @@ func (d *D100) roll() {
 
 func (d *D100) Total() int {
 	var s int
-	for r := range d.rolls {
+	for _, r := range d.rolls {
 		s += r
 	}
 	return s
