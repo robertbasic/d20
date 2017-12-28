@@ -8,6 +8,8 @@ import (
 
 	"encoding/json"
 
+	"encoding/base64"
+
 	"github.com/robertbasic/d20/roll"
 )
 
@@ -65,20 +67,19 @@ func (rh *Roll) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 		dice = append(dice, *d)
 	}
-	log.Println(dice[0].Rolls, dice[0].Total())
-	setCookie(dice, r)
+	setCookie(dice, w)
 }
 
-func setCookie(dice []roll.Dice, r *http.Request) {
+func setCookie(dice []roll.Dice, w http.ResponseWriter) {
 	j, err := json.Marshal(dice)
 	if err != nil {
 		log.Println(err)
 	}
-	log.Println(j)
-	log.Println(json.Valid(j))
-	var d []roll.Dice
-	json.Unmarshal(j, &d)
-	log.Println(d[0].Total())
+	c := http.Cookie{
+		Name:  "dice",
+		Value: base64.StdEncoding.EncodeToString(j),
+	}
+	http.SetCookie(w, &c)
 }
 
 func redirect(w http.ResponseWriter, r *http.Request) {
