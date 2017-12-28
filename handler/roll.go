@@ -6,6 +6,8 @@ import (
 	"net/http"
 	"strconv"
 
+	"encoding/json"
+
 	"github.com/robertbasic/d20/roll"
 )
 
@@ -37,32 +39,46 @@ func (rh *Roll) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			continue
 		}
 
-		var d roll.Dice
+		var sides int
 		switch field {
 		case "d4":
-			d = roll.NewD4(val)
+			sides = 4
 		case "d6":
-			d = roll.NewD6(val)
+			sides = 6
 		case "d8":
-			d = roll.NewD8(val)
+			sides = 8
 		case "d10":
-			d = roll.NewD10(val)
+			sides = 10
 		case "d12":
-			d = roll.NewD12(val)
+			sides = 12
 		case "d100":
-			d = roll.NewD100(val)
+			sides = 100
 		case "d20-normal":
-			d = roll.NewD20Normal()
+			sides = 20
 		case "d20-advantage":
-			d = roll.NewD20Advantage()
+			sides = 20
 		case "d20-disadvantage":
-			d = roll.NewD20Disadvantage()
+			sides = 20
 		}
 
-		dice = append(dice, d)
-	}
+		d := roll.NewDice(sides, val)
 
-	log.Println(len(dice))
+		dice = append(dice, *d)
+	}
+	log.Println(dice[0].Rolls, dice[0].Total())
+	setCookie(dice, r)
+}
+
+func setCookie(dice []roll.Dice, r *http.Request) {
+	j, err := json.Marshal(dice)
+	if err != nil {
+		log.Println(err)
+	}
+	log.Println(j)
+	log.Println(json.Valid(j))
+	var d []roll.Dice
+	json.Unmarshal(j, &d)
+	log.Println(d[0].Total())
 }
 
 func redirect(w http.ResponseWriter, r *http.Request) {
