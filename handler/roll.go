@@ -1,14 +1,12 @@
 package handler
 
 import (
+	"encoding/base64"
+	"encoding/json"
 	"errors"
 	"log"
 	"net/http"
 	"strconv"
-
-	"encoding/json"
-
-	"encoding/base64"
 
 	"github.com/robertbasic/d20/roll"
 )
@@ -55,11 +53,7 @@ func (rh *Roll) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			sides = 12
 		case "d100":
 			sides = 100
-		case "d20-normal":
-			sides = 20
-		case "d20-advantage":
-			sides = 20
-		case "d20-disadvantage":
+		case "d20":
 			sides = 20
 		}
 
@@ -91,17 +85,16 @@ func convv(value []string) (int, error) {
 		return 0, errors.New("Can not convert submitted value to int")
 	}
 
-	var v int
 	var val = value[0]
 
-	if val == "on" {
+	switch val {
+	case "normal":
 		return 1, nil
+	case "advantage":
+		return 2, nil
+	case "disadvantage":
+		return -2, nil
 	}
 
-	v, err := strconv.Atoi(val)
-	if err != nil {
-		return 0, err
-	}
-
-	return v, nil
+	return strconv.Atoi(val)
 }
