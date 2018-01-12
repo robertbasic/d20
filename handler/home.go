@@ -16,21 +16,26 @@ var tpls = []string{
 }
 var tpl = template.Must(template.ParseFiles(tpls...))
 
-type Home struct{}
+type Home struct {
+	Dice []roll.Dice
+}
 
 func (hh *Home) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	var data []roll.Dice
-	defer tpl.Execute(w, data)
+	var dice []roll.Dice
+	defer tpl.Execute(w, hh)
 
 	c, err := r.Cookie("dice")
 	if err != nil {
 		return
 	}
 
-	data, err = getDice(c.Value)
+	dice, err = getDice(c.Value)
 	if err != nil {
 		log.Println(err)
 	}
+
+	hh.Dice = dice
+	log.Println(dice)
 }
 
 func getDice(c string) ([]roll.Dice, error) {

@@ -1,5 +1,22 @@
 {{define "body"}}
 <form method="post" action="/roll">
+
+    {{if .Dice}}
+    <div class="tile is-ancestor">
+        <div class="tile is-12 is-parent">
+            <div class="tile is-child box">
+                <div class="field is-grouped is-grouped-centered columns">
+                    {{range .Dice}}
+                        <div class="column">
+                            <p class="title">d{{.Sides}}: {{.Total}}</p>
+                        </div>
+                    {{end}}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{end}}
+
     <div class="tile is-ancestor">
         <div class="tile is-4 is-parent is-vertical">
             <div class="tile box is-child notification is-info">
